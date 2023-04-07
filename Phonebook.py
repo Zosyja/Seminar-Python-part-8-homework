@@ -32,10 +32,10 @@ def delete_record():
                 f.write(contact)
             else:
                 deleted = True
-            if deleted:
-                print('Запись успешно удалена.')
-            else:
-                print('Запись не найдена.')
+        if deleted:
+            print('Запись успешно удалена.')
+        else:
+            print('Запись не найдена.')
 
 
 def search_by_lastname():
@@ -46,8 +46,8 @@ def search_by_lastname():
             if search_lastname in line:
                 print(line.strip())
                 found = True
-            if not found:
-                print('Запись не найдена.')
+        if not found:
+            print('Запись не найдена.')
 
 
 def edit_contact():
@@ -60,6 +60,7 @@ def edit_contact():
             if not search_lastname in contact:
                 f.write(contact)
             else:
+                print(contact.strip())
                 lastname, firstname, middlename, phone = contact.strip().split(',')
                 newlastname = input('Введите новую фамилию: ')
                 newfirstname = input('Введите новое имя: ')
@@ -67,17 +68,18 @@ def edit_contact():
                 newphone = input('Введите новый номер телефона: ')
                 f.write(f"{newlastname}, {newfirstname}, {newmiddlename}, {newphone}\n")
                 edited = True
-            if edited:
-                print('Запись успешно изменена.')
-            else:
-                print('Запись не найдена.')
+        if edited:
+            print('Запись успешно изменена.')
+        else:
+            print('Запись не найдена.')
 
 
 def print_all_records():
     with open('boook.txt','r') as f:
-        print('Фамилия Имя Отчество - телефон')
+        print('Фамилия, Имя, Отчество, телефон')
         for line in f:
             print(line.strip())
+
 
 
 def main():
